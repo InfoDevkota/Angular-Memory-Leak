@@ -10,15 +10,26 @@ export class NewUserComponent implements OnInit {
 
   users: any = [];
 
+  subscriptions = [];
+
   constructor(
     private socketService: SocketServiceService 
   ) { }
 
   ngOnInit(): void {
-    this.socketService.getNewUser().subscribe((data:any)=>{
+    let aSubScription = this.socketService.getNewUser().subscribe((data:any)=>{
       console.log(data);
       this.users.unshift(data)
     })
+    this.subscriptions.push(aSubScription);
+  }
+
+  ngOnDestroy(): void{
+    // console.log("On Destroy called");
+    this.subscriptions.forEach(element => {
+      element.unsubscribe();
+    });
+    
   }
 
 
