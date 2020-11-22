@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="users">
+        <div *ngFor="let user of users">
+            <app-new-user-item [user]="user">
+    
+            </app-new-user-item>
+        </div>
+    </div>
+    <div *ngIf="users.length == 0">
+        No New Users
+    </div>
+</div>

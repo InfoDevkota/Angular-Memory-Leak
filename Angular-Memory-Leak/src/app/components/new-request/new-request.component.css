@@ -1,0 +1,9 @@
+.wrapper{
+    padding: 16px;
+}
+
+.requests{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
